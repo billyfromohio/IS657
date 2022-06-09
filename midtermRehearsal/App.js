@@ -4,12 +4,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Pressable, TextInput } from 'react-native';
 
 export default function App() {
-  const {number, setNumber} = useState(0);
-  const {message, setMessage} = useState('');
+  const [number, setNumber] = useState(0);
+  const [message, setMessage] = useState('');
   
   function getSquare() {
     const squared = number * number;
-    return 'The square of ${number} is ${squared}.';
+    return `The square of ${number} is ${squared}.`;
   }
 
   function onChangeText(input) {
