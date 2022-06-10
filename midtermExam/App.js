@@ -20,8 +20,8 @@ export default function App() {
         </View>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}>
-            <View style={{backgroundColor: 'lightBlue'}}>
-              <Text style={{justifyContent: 'flex-start'}}>{`CALCULATE SUM`}</Text></View>
+            <View style={{backgroundColor: 'dodgerblue', width: 130, height: 30, justifyContent: 'center', alignItems: 'center',}}>
+              <Text style={{ color: 'white'}}>{`CALCULATE SUM`}</Text></View>
               </View>
               <View style={styles.inputField}><View style={styles.input}></View></View>
          
