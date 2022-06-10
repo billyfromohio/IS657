@@ -9,21 +9,22 @@ export default function App() {
      <View style={{flex:1, width: '100%', backgroundColor: 'teal', justifyContent: 'center', margin: 10,}}>
        <Text style={{fontSize: 30, color: 'gold', alignSelf: 'center'}}>IS657 Midterm</Text>
       </View>
-      <View style={{flex: 1,}}>
+      <View style={{flex: 1, width: '100%'}}>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}><Text>{`Number 1 [10 to 20]`}</Text></View>
           <View style={styles.inputField}><TextInput style={styles.input}/></View>
         </View>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}><Text>{`Number 2 [100 to 200]`}</Text></View>
-          <View style={styles.inputField}><TextInput style={styles.input}/><TextInput style={styles.input}/></View>
+          <View style={styles.inputField}><TextInput style={styles.input}/></View>
         </View>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}>
             <View style={{backgroundColor: 'lightBlue'}}>
               <Text style={{justifyContent: 'flex-start'}}>{`CALCULATE SUM`}</Text></View>
-            </View>
-          <View style={styles.inputField}><View style={styles.outputBox}></View></View>
+              </View>
+              <View style={styles.inputField}><View style={styles.input}></View></View>
+         
         </View>
       </View>
       <StatusBar style="auto" />
@@ -55,26 +56,31 @@ const styles = StyleSheet.create({
    flexDirection: 'row',
    //alignItems:'center',
    //justifyContent: 'flex-end',
+//   borderWidth: 1,
 
 
   },
   inputText: {
     flex: 2,
-  justifyContent: 'flex-start',
-   alignItems: 'center',
+  justifyContent: 'center',
+   alignItems: 'flex-start',
    margin: 5,
+  // borderWidth: 1,
     
   },
   inputField: {
     flex: 2,
-  justifyContent: 'flex-start',
-   alignItems: 'center',
+  justifyContent: 'center',
+   alignItems: 'flex-end',
    margin: 5,
-    
+//   borderWidth: 1,
+
   },
   outputBox: {
-    flex:1,
-    alignItems: 'flex-end',
+    height: 30,
+    width: 100,
+    // alignItems: 'flex-end',
+    justifyContent: 'center',
     borderwidth: 1,
   },
 
