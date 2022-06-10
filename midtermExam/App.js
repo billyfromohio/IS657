@@ -6,21 +6,24 @@ import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-     <View style={{flex:1, backgroundColor: 'teal', justifyContent: 'center'}}>
-       <Text style={{fontSize: 40, color: 'gold'}}>IS650 Midterm</Text>
+     <View style={{flex:1, width: '100%', backgroundColor: 'teal', justifyContent: 'center', margin: 10,}}>
+       <Text style={{fontSize: 30, color: 'gold', alignSelf: 'center'}}>IS657 Midterm</Text>
       </View>
       <View style={{flex: 1,}}>
-        <View style={styles.inputRowBoxes}>
+        <View style={styles.inputBoxes}>
           <View style={styles.inputText}><Text>{`Number 1 [10 to 20]`}</Text></View>
-          <View style={{alignItems:'flex-end'}}><TextInput style={styles.input}/></View>
+          <View style={styles.inputField}><TextInput style={styles.input}/></View>
         </View>
         <View style={styles.inputBoxes}>
-          <View style={{alignItems:'flex-start'}}><Text>{`Number 2 [100 to 200]`}</Text></View>
-          <View><TextInput style={styles.input}/><TextInput style={styles.input}/></View>
+          <View style={styles.inputText}><Text>{`Number 2 [100 to 200]`}</Text></View>
+          <View style={styles.inputField}><TextInput style={styles.input}/><TextInput style={styles.input}/></View>
         </View>
-        <View style={styles.inputRowBoxes}>
-          <View><Text style={{}}>{`CALCULATE SUM`}</Text></View>
-          <View style={styles.inputText}><View style={styles.outputBox}></View></View>
+        <View style={styles.inputBoxes}>
+          <View style={styles.inputText}>
+            <View style={{backgroundColor: 'lightBlue'}}>
+              <Text style={{justifyContent: 'flex-start'}}>{`CALCULATE SUM`}</Text></View>
+            </View>
+          <View style={styles.inputField}><View style={styles.outputBox}></View></View>
         </View>
       </View>
       <StatusBar style="auto" />
@@ -34,22 +37,39 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 20,
+    maxWidth: 350,
+    maxHeight: 400,
   },
   input: {
 
     height: 30,
-    margin: 12,
+    width: 100,
+    //margin: 12,
     borderWidth: 1,
+    //justifyContent: 'flex-end',
     //padding: 10,
   },
-  inputRowBoxes: {
+  inputBoxes: {
    flex: 1,
    flexDirection: 'row',
-   // alignItems:'flex-start',
+   //alignItems:'center',
+   //justifyContent: 'flex-end',
+
 
   },
   inputText: {
-    justifyContent: 'center',
+    flex: 2,
+  justifyContent: 'flex-start',
+   alignItems: 'center',
+   margin: 5,
+    
+  },
+  inputField: {
+    flex: 2,
+  justifyContent: 'flex-start',
+   alignItems: 'center',
+   margin: 5,
     
   },
   outputBox: {
