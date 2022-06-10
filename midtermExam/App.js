@@ -1,7 +1,26 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
-// import { TextInput } from 'react-native-web';
+import { useState } from 'react';
+
+const number1 = 0;
+const number2 = 0;
+
+function addNumbers(number1, number2) {
+  return number1 + number2;
+
+}
+
+function onChangeText1(input) {
+  const inputNumber = parseInt(input) || 0;
+  setNumber(number1);
+}
+
+function onChangeText2(input) {
+  const inputNumber = parseInt(input) || 0;
+  setNumber(number2);
+}
+
 
 export default function App() {
   return (
@@ -12,18 +31,21 @@ export default function App() {
       <View style={{flex: 1, width: '100%'}}>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}><Text>{`Number 1 [10 to 20]`}</Text></View>
-          <View style={styles.inputField}><TextInput style={styles.input}/></View>
+          <View style={styles.inputField}><TextInput style={styles.input} onChangeText1={onChangeText1}  keyboardType={'numeric'} /></View>
         </View>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}><Text>{`Number 2 [100 to 200]`}</Text></View>
-          <View style={styles.inputField}><TextInput style={styles.input}/></View>
+          <View style={styles.inputField}><TextInput style={styles.input} onChangeText2={onChangeText2} 
+          keyboardType={'numeric'} /></View>
         </View>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}>
             <View style={{backgroundColor: 'dodgerblue', width: 130, height: 30, justifyContent: 'center', alignItems: 'center',}}>
-              <Text style={{ color: 'white'}}>{`CALCULATE SUM`}</Text></View>
+              <Pressable onPress={() => addNumbers(number1,number2)}>
+                <Text style={{ color: 'white'}}>{`CALCULATE SUM`}</Text>
+                </Pressable></View>
               </View>
-              <View style={styles.inputField}><View style={styles.input}></View></View>
+              <View style={styles.inputField}><View style={styles.input}><Text>{addNumbers()}</Text></View></View>
          
         </View>
       </View>
