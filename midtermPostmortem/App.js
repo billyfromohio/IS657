@@ -10,18 +10,36 @@ export default function App() {
   const [input2, setNumber2] = useState('');
   const [total, setMessage] = useState('');
 
-  function getSum() {
-    const number1 = parseInt(input1);
-    const number2 = parseInt(input2);
-    // if (!number1.isInteger || number2.isInteger || 9 < number1 < 21 || 99 < number2 < 201) {
-    //   setMessage('GTFO');
-    // }else{
-      const sum = number1 + number2;
-      setMessage(sum.toString());
-    // }
-console.log(number2);
-console.log(number2);
-  }
+  const [error1, setError1] = useState('');
+  const [error2, setError2] = useState('');
+
+  const number1 = parseInt(input1);
+  const number2 = parseInt(input2);
+
+function addUp() {
+  const sum = number1 + number2;
+  setMessage(sum.toString());
+}
+
+function validateInput() {
+        if (( 9 < number1 && number1 < 21 ) && ( 99 < number2 && number2 < 201)){
+            addUp();
+        } else if ((number1 < 10 || number1 > 20) || (number1 < 100 || number1 > 200)){
+            if ((number1 < 10 || number1 > 20) && (number2 < 100 || number2 > 200)){
+              setError1('Number 1 should be in [10, 20]');
+              setError2('Number 2 should be in [100, 200]');
+            }
+            else if(number2 < 100 || number2 > 200) {
+              setError2('Number 2 should be in [100, 200]');
+            }
+            else{
+                setError1('Number 1 should be in [10, 20]');                 
+              }
+            }
+          
+        }
+
+          
 
 
   return (
@@ -41,13 +59,23 @@ console.log(number2);
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}>
             <View style={{backgroundColor: 'dodgerblue', width: 130, height: 30, justifyContent: 'center', alignItems: 'center',}}>
-              <Pressable onPress={(getSum)}>
+              <Pressable onPress={(validateInput)}>
                 <Text style={{ color: 'white'}}>{`CALCULATE SUM`}</Text>
                 </Pressable></View>
               </View>
               <View style={styles.inputField}><View style={styles.input}><Text style={styles.outputText}>{total}</Text></View></View>         
         </View>
-      </View>
+        {/* error message area */}
+        <View style={styles.inputBoxes}>
+          <View >
+            <View style={{flex: 2,}} >
+              <Text style={styles.errorText}>{error1}</Text>
+              <Text style={styles.errorText}>{error2}</Text>
+            </View>
+          </View>
+          <View style={{flex: 2,}}></View>
+        </View>
+      </View> 
       <StatusBar style="auto" />
     </View>
   );
@@ -112,6 +140,14 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'center',
     alignItems: 'flex-start',
+    margin: 5,
+  
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 10,
+   // justifyContent: 'flex-start',
+   // alignItems: 'flex-start',
     margin: 5,
   
   },
