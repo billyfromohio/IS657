@@ -5,15 +5,21 @@ import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import { NavigationContainer} from '@react-navigation/native';
 //import { createStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
+import { useFonts} from 'expo-font';
+import AppLoading  from 'expo-app-loading';
 
 const Nav = createBottomTabNavigator();
 
 
 
-
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    'MouseMemoirs': require('./assets/fonts/MouseMemoirs-Regular.ttf'),
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+  
   return (
     
     
@@ -47,9 +53,10 @@ function MagicScreen({ navigation, route }) {
   return (
     
     <View style={styles.container}>
-      <Text style={styles.magicTextStyle}>Oh, that's too bad. You see, there's really no such
-      thing as magic. It's really just a combination of distraction, illusion and a whole lot of 
-      wishful thinking. But, it is still fun!</Text>
+      <Text style={styles.magicTextStyle}>Oh, that's too bad.</Text>
+      <Text style={styles.magicTextStyle}>You see, there's really no such
+      thing as magic.</Text><Text style={styles.magicTextStyle}> It's really just a combination of distraction, illusion and a whole lot of 
+      wishful thinking.</Text><Text style={styles.magicTextStyle}> But, it is still fun!</Text>
       <Pressable onPress={() => navigation.navigate('Main', { name: 'Me' })}>
     
 </Pressable>
@@ -74,8 +81,8 @@ const styles = StyleSheet.create({
 
   magicTextStyle: {
     color: "white",
-    fontSize: 20,
+    fontSize: 32,
     fontFamily: 'MouseMemoirs',
-
+    margin: 10,
   },
 });
