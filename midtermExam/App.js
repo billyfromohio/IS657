@@ -7,15 +7,6 @@ import { useState } from 'react';
 
 
 export default function App() {
-
-  const [numberText1,  setNumber1] = useState('');
-  const [numberText2,  setNumber2] = useState('');
-
-  const addNumbers = function  () {
-  const number1 = parseInt(numberText1);
-  const number2 = parseInt(numberText2);
-  return number1 + number2
-    }
   return (
     <View style={styles.container}>
      <View style={{flex:1, width: '100%', backgroundColor: 'teal', justifyContent: 'center', margin: 10,}}>
@@ -24,28 +15,27 @@ export default function App() {
       <View style={{flex: 1, width: '100%'}}>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}><Text>{`Number 1 [10 to 20]`}</Text></View>
-          <View style={styles.inputField}><TextInput style={styles.input} onChangeText={(e) =>setNumber1(e.target.value)}  keyboardType={'numeric'} /></View>
+          <View style={styles.inputField}><TextInput style={styles.input} onChangeText1={onChangeText1}  keyboardType={'numeric'} /></View>
         </View>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}><Text>{`Number 2 [100 to 200]`}</Text></View>
-          <View style={styles.inputField}><TextInput style={styles.input} onChangeText={setNumber2} keyboardType={'numeric'} /></View>
+          <View style={styles.inputField}><TextInput style={styles.input} onChangeText2={onChangeText2} 
+          keyboardType={'numeric'} /></View>
         </View>
         <View style={styles.inputBoxes}>
           <View style={styles.inputText}>
             <View style={{backgroundColor: 'dodgerblue', width: 130, height: 30, justifyContent: 'center', alignItems: 'center',}}>
-              <Pressable onPress={addNumbers}>
+              <Pressable onPress={() => addNumbers(number1,number2)}>
                 <Text style={{ color: 'white'}}>{`CALCULATE SUM`}</Text>
-                </Pressable>
+                </Pressable></View>
               </View>
-              <View style={styles.inputField}><View style={styles.input}><Text>{total}</Text></View></View>
-          </View>
+              <View style={styles.inputField}><View style={styles.input}><Text>{addNumbers()}</Text></View></View>
+         
         </View>
       </View>
       <StatusBar style="auto" />
     </View>
-
   );
-
 }
 
 const styles = StyleSheet.create({
