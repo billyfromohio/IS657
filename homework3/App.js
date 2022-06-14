@@ -1,46 +1,57 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Pressable, Image } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
 
-import { NavigationContainer, TabRouter } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer} from '@react-navigation/native';
+//import { createStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
 
-const Tab = createBottomTabNavigator();
+const Nav = createBottomTabNavigator();
+
+
+
 
 export default function App() {
   return (
+    
+    
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
+      <Nav.Navigator>
+        <Nav.Screen
+          name="Main"
+          component={MainScreen}
           options={{ }}
         />
-        <Tab.Screen
-        name="Info"
-        component={ProfileScreen}
+        <Nav.Screen
+        name="Magic"
+        component={MagicScreen}
         initialParams={{ name: 'Alice' }} />
-      </Tab.Navigator>
+      </Nav.Navigator>
     </NavigationContainer>
   );
 }
 
-function HomeScreen({ navigation }) {
+function MainScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>Home Screen</Text>
-      <Pressable onPress={() => navigation.navigate()}>
-      <Image  style={{height:50,width:50}}  source={{uri:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/539px-React-icon.svg.png' }} />
+      <Pressable onPress={() => navigation.navigate('Magic', { name: 'Jane' })}>
+      <Image  style={{height:400,width:400}}  source={{uri:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/539px-React-icon.svg.png' }} />
 </Pressable>
     </View>
   );
 }
-function ProfileScreen({ navigation, route }) {
+function MagicScreen({ navigation, route }) {
   return (
+    
     <View style={styles.container}>
-      <Text style={styles.textStyle}>This is {route.params.name}'s profile</Text>
-      <Pressable onPress={() => navigation.navigate('Home', { name: 'Me' })}>
-      <Image  style={{height:50,width:50}}  source={{uri:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/539px-React-icon.svg.png'}}/>
+      <Text style={styles.magicTextStyle}>Oh, that's too bad. You see, there's really no such
+      thing as magic. It's really just a combination of distraction, illusion and a whole lot of 
+      wishful thinking. But, it is still fun!</Text>
+      <Pressable onPress={() => navigation.navigate('Main', { name: 'Me' })}>
+    
 </Pressable>
     </View>
   );
@@ -61,8 +72,10 @@ const styles = StyleSheet.create({
 
   },
 
-  typeStyle: {
+  magicTextStyle: {
     color: "white",
+    fontSize: 20,
+    fontFamily: 'MouseMemoirs',
 
   },
 });
