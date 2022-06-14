@@ -27,7 +27,7 @@ export default function App() {
         <Nav.Screen
         name="Magic"
         component={MagicScreen}
-        initialParams={{ name: 'Alice' }} />
+        initialParams={{}} />
       </Nav.Navigator>
     </NavigationContainer>
   );
@@ -38,7 +38,7 @@ function MainScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.textStyle}>Home Screen</Text>
       <Pressable onPress={() => navigation.navigate('Magic', { name: 'Jane' })}>
-      <Image  style={{height:400,width:400}}  source={{uri:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/539px-React-icon.svg.png' }} />
+      <Image  style={{height:700, width:300}}  source={ require('./assets/wizardImg.png' ) } />
 </Pressable>
     </View>
   );
