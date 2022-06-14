@@ -6,39 +6,42 @@ import { NavigationContainer} from '@react-navigation/native';
 //import { createStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts} from 'expo-font';
-import AppLoading  from 'expo-app-loading';
+import AppLoading  from 'expo-splash-screen';
 
-const Nav = createBottomTabNavigator();
-
-
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    'MouseMemoirs': require('./assets/fonts/MouseMemoirs-Regular.ttf'),
-  });
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
-  
+
   return (
     
     
     <NavigationContainer>
-      <Nav.Navigator>
-        <Nav.Screen
+      <Tab.Navigator
+      screenOptions={{
+        //showLabel: false,
+        tabBarInactiveTintColor: 'green',
+        tabBarActiveTintColor: 'blueviolet',
+        tabBarStyle: {
+          fontSize: 30,
+          height: 50,
+          backgroundColor: 'black',
+        }
+      }}>
+        <Tab.Screen
           name="Main"
           component={MainScreen}
-          options={{ }}
+        //  options={{tabBarButton: () => null,}} 
         />
-        <Nav.Screen
+        <Tab.Screen
         name="Magic"
         component={MagicScreen}
+        // options={{tabBarButton: () => null,}}
         initialParams={{}} />
-      </Nav.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
-
+//first screen
 function MainScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -49,6 +52,8 @@ function MainScreen({ navigation }) {
     </View>
   );
 }
+
+// second screen
 function MagicScreen({ navigation, route }) {
   return (
     
