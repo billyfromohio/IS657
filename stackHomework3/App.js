@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
 
 import { NavigationContainer} from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts } from 'expo-font';
 import { AppLoading }  from 'expo-splash-screen';
@@ -14,7 +14,7 @@ import { ImageBackground } from 'react-native';
 
 export default function App() {
 
-  const Tab = createBottomTabNavigator();
+  const Stack = createNativeStackNavigator();
   const [loaded] = useFonts({
     MouseMemoirs: require('./assets/fonts/MouseMemoirs-Regular.ttf'),
   });
@@ -27,32 +27,20 @@ export default function App() {
     
     
     <NavigationContainer>
-      <Tab.Navigator
-      screenOptions={{
-        tabBarInactiveTintColor: 'green',
-        tabBarActiveTintColor: 'blueviolet',
-
-        tabBarStyle: { 
-          tabBarVisible: false,
-          tabBarButton: () => null,
-          fontSize: 30,
-          height: 70,
-          backgroundColor: 'black', 
-          color: 'black',
-        } 
-      }}>
-        <Tab.Screen
+      <Stack.Navigator
+      >
+        <Stack.Screen
           name="Wizard"
           component={MainScreen}
          options={{ headerShown: false, }} 
         />
-        <Tab.Screen
+        <Stack.Screen
         name="Magic"
         component={MagicScreen}
         initialParams={{}}
         options={{ headerShown: false, }}
         />
-      </Tab.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
