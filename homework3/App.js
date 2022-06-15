@@ -10,9 +10,11 @@ import { useFonts } from 'expo-font';
 import { AppLoading }  from 'expo-splash-screen';
 import { ImageBackground } from 'react-native';
 
-const Tab = createBottomTabNavigator();
+
 
 export default function App() {
+
+  const Tab = createBottomTabNavigator();
   const [loaded] = useFonts({
     MouseMemoirs: require('./assets/fonts/MouseMemoirs-Regular.ttf'),
   });
