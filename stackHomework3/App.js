@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Image, Button } from 'react-native';
+
 
 import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -64,15 +65,22 @@ function MainScreen({ navigation }) {
 // second screen
 function MagicScreen({ navigation, route }) {
   return (
-    
-    <View style={styles.container}>
-      
-     <Pressable onPress={() => navigation.navigate('Wizard', { name: 'Me' })}>
-      <Text style={styles.magicTextStyle}>Oh, that's too bad.</Text>
-      <Text style={styles.magicTextStyle}>{'\t'}You see, there's actually no such
-      thing as magic.</Text><Text style={styles.magicTextStyle}>{'\t'} It's really just a combination of distraction, illusion and a whole lot of 
-      wishful thinking.</Text><Text style={styles.magicTextStyle}> But, it is still fun!</Text>
-      </Pressable>
+    <View style={styles.magicContainer}>
+      <View style={{flex: 1, alignItems: 'flex-end',}}>
+        <Button
+        title='Done'
+        color= 'dodgerblue'
+        onPress={() => navigation.navigate('Wizard', { name: 'Me' })}
+        />
+      </View>
+      <View style={{flex: 3,}}>
+      <Pressable onPress={() => navigation.navigate('Wizard', { name: 'Me' })}>
+        <Text style={styles.magicTextStyle}>Oh, that's too bad.</Text>
+        <Text style={styles.magicTextStyle}>{'\t'}You see, there's actually no such
+        thing as magic.</Text><Text style={styles.magicTextStyle}>{'\t'} It's really just a combination of distraction, illusion and a whole lot of 
+        wishful thinking.</Text><Text style={styles.magicTextStyle}> But, it is still fun!</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -81,7 +89,7 @@ function MagicScreen({ navigation, route }) {
 
 
 const styles = StyleSheet.create({
-  container: {
+  magicContainer: {
     flex: 1,
     backgroundColor: '#000',
     alignItems: 'center',
@@ -89,7 +97,6 @@ const styles = StyleSheet.create({
   },
   wizardContainer: {
     flex: 1,
-   // backgroundColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
   },
