@@ -31,7 +31,10 @@ export default function App() {
       screenOptions={{
         tabBarInactiveTintColor: 'green',
         tabBarActiveTintColor: 'blueviolet',
-        tabBarStyle: {
+
+        tabBarStyle: { 
+          tabBarVisible: false,
+          tabBarButton: () => null,
           fontSize: 30,
           height: 70,
           backgroundColor: 'black', 
@@ -47,6 +50,7 @@ export default function App() {
         name="Magic"
         component={MagicScreen}
         initialParams={{}}
+        options={{ headerShown: false, }}
         />
       </Tab.Navigator>
     </NavigationContainer>
@@ -57,9 +61,13 @@ function MainScreen({ navigation }) {
   return (
     <ImageBackground  style={{height:'100%', width:'100%'}}  source={ require('./assets/wizardImg.png' ) }>
       <View style={styles.wizardContainer}>
-        <Pressable onPress={() => navigation.navigate('Magic', )}>
-          <Text style={styles.textStyle}>So you want to be a wizard?</Text>
-        </Pressable>
+        <View style={{flex: 1, justifyContent: 'center',}}>
+        </View>
+        <View style={{flex: 2, justifyContent: 'flex-end', alignItems: 'center'}}>
+          <Pressable onPress={() => navigation.navigate('Magic', )}><Text style={styles.textStyle}>If you want to be a wizard...</Text>
+          <Text style={styles.textStyle}>...just touch your wand!</Text><View style={{alignItems: 'center'}}><Image style={{height: 220, width: 100}} source={require ( './assets/wand.png')}></Image></View>      
+          </Pressable>
+        </View>
       </View>
     </ImageBackground>
   );
@@ -73,7 +81,7 @@ function MagicScreen({ navigation, route }) {
       
      <Pressable onPress={() => navigation.navigate('Wizard', { name: 'Me' })}>
       <Text style={styles.magicTextStyle}>Oh, that's too bad.</Text>
-      <Text style={styles.magicTextStyle}>{'\t'}You see, there's really no such
+      <Text style={styles.magicTextStyle}>{'\t'}You see, there's actually no such
       thing as magic.</Text><Text style={styles.magicTextStyle}>{'\t'} It's really just a combination of distraction, illusion and a whole lot of 
       wishful thinking.</Text><Text style={styles.magicTextStyle}> But, it is still fun!</Text>
       </Pressable>
