@@ -33,7 +33,7 @@ export default function App() {
         tabBarActiveTintColor: 'blueviolet',
         tabBarStyle: {
           fontSize: 30,
-          height: 50,
+          height: 70,
           backgroundColor: 'black', 
           color: 'black',
         } 
