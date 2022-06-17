@@ -22,8 +22,8 @@ const RegisterScreen = ({ navigation }) => {
         });
     }, [navigation]);
     
-    const register = () => {
-        createUserWithEmailAndPassword(auth, email, password) 
+    async function register () {
+        await createUserWithEmailAndPassword(auth, email, password) 
         .then(authUser => {
             updateProfile(userCredential.user, {
                 displayName: name,
