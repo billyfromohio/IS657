@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView } from 'react-native';
 
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,14 +22,14 @@ const LoginScreen = () => {
     
     <View style={styles.inputContainer}>
         <Input 
-          placehoder="Email"
+          placeholder="Email"
           autoFocus 
           type="email" 
           value={email} 
           onChangeText={(text) => setEmail(text)} 
           />
         <Input 
-          placehoder="Password" 
+          placeholder="Password" 
           sercureTextEntry 
           type="password"  
           value={password} 
@@ -39,7 +39,7 @@ const LoginScreen = () => {
     </View>
 
     <Button containerStyle={styles.button} onPress={signIn} title='Login' />
-    <Button containerStyle={styles.button} type='outline' title='Register' />
+    <Button containerStyle={styles.button} type='outline' onPress={ () => navigation.navigate('Register') } title='Register' />
     <View style={{ height: 200 }}/>
     </KeyboardAvoidingView> 
   );
