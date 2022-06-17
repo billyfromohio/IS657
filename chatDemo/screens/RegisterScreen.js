@@ -3,11 +3,12 @@ import { StyleSheet, View } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Button, Input, Text } from 'react-native-elements';
-// import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/app';
-import firebase from 'firebase/compat/app';
-// import firebaseApp from "../firebase/firebase";
+
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+
+import firebaseApp from "../firebase/firebase";
 import 'firebase/compat/auth'
-// const auth = getAuth(firebaseApp);
+const auth = getAuth(firebaseApp);
 
 const RegisterScreen = ({ navigation }) => {
     const [name, setName] = useState('');
@@ -22,10 +23,15 @@ const RegisterScreen = ({ navigation }) => {
     }, [navigation]);
     
     const register = () => {
-        auth.createUserWithEmailAndPassword(email, password) 
-        .then(authUser => {})
+        createUserWithEmailAndPassword(auth, email, password) 
+        .then(authUser => {
+            updateProfile(userCredential.user, {
+                displayName: name,
+                photoURL: imageUrl,
+            });
+        })
         .catch((error) => alert(error.message))
-    };
+    }
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
