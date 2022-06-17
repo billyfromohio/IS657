@@ -3,21 +3,26 @@ import React, { useEffect, useState } from 'react';
 import {Button, Input, Image} from 'react-native-elements';
 import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView } from 'react-native';
+import firebaseApp from '../firebase';
 
+const auth = getAuth(firebaseApp);
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   useEffect(() => {
-    aut.onAuthStateChanged((authUser) => {
+    auth.onAuthStateChanged((authUser) => {
       if (authUser){
     navigation.replace('Home');
     }
   });
-}, []);
 
-  const signIn = () => {};
+}, [navigation]);
+
+  const signIn = () => {
+    signInWithEmailAndPassword(auth, email, password).catch
+  };
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}> 
