@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import {Button, Input, Image} from 'react-native-elements';
 import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView } from 'react-native';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import firebaseApp from '../firebase';
 
 const auth = getAuth(firebaseApp);
@@ -11,17 +12,17 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
+  useLayoutEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser){
     navigation.replace('Home');
     }
   });
-
+  return unsubscribe;
 }, [navigation]);
 
   const signIn = () => {
-    signInWithEmailAndPassword(auth, email, password).catch
+    signInWithEmailAndPassword(auth, email, password).catch((errpr) => alert(error))
   };
 
   return (
