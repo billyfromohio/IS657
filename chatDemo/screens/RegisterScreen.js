@@ -3,7 +3,11 @@ import { StyleSheet, View } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Button, Input, Text } from 'react-native-elements';
-import { auth } from '../firebase';
+// import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/app';
+import firebase from 'firebase/compat/app';
+// import firebaseApp from "../firebase/firebase";
+import 'firebase/compat/auth'
+// const auth = getAuth(firebaseApp);
 
 const RegisterScreen = ({ navigation }) => {
     const [name, setName] = useState('');
