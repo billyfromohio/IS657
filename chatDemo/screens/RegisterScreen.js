@@ -6,7 +6,7 @@ import { Button, Input, Text } from 'react-native-elements';
 
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
-import firebaseApp from "../firebase/firebase";
+import firebaseApp from '../firebase';
 import 'firebase/compat/auth'
 const auth = getAuth(firebaseApp);
 
