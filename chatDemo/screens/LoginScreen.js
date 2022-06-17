@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
 }, [navigation]);
 
   const signIn = () => {
-    signInWithEmailAndPassword(auth, email, password).catch((errpr) => alert(error))
+    signInWithEmailAndPassword(auth, email, password).catch((error) => alert(error))
   };
 
   return (
