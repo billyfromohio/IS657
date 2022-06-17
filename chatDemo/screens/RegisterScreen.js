@@ -21,16 +21,24 @@ const RegisterScreen = ({ navigation }) => {
             headerBackTitle: 'Back to Login',
         });
     }, [navigation]);
-    
-    async function register () {
-        await createUserWithEmailAndPassword(auth, email, password) 
-        .then(authUser => {
+    function register() {
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
             updateProfile(userCredential.user, {
-                displayName: name,
-                photoURL: imageUrl,
+              displayName: name,
+              photoURL: imageUrl,
             });
-        })
-        .catch((error) => alert(error.message))
+          })
+          .catch((error) => alert(error.message));
+    // async function register () {
+    //     await createUserWithEmailAndPassword(auth, email, password) 
+    //     .then(authUser => {
+    //         updateProfile(userCredential.user, {
+    //             displayName: name,
+    //             photoURL: imageUrl,
+    //         });
+    //     })
+    //     .catch((error) => alert(error.message))
     }
 
   return (
