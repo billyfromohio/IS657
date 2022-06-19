@@ -14,13 +14,14 @@ const LoginScreen = ({ navigation }) => {
 
   useLayoutEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-      if (authUser){
-    navigation.replace('Home');
-    }
-  });
-  return unsubscribe;
-}, [navigation]);
+      if (authUser) {
+        navigation.replace('Home');
+      }
+    });
 
+    return unsubscribe;
+  }, [navigation]);
+  
   const signIn = () => {
     signInWithEmailAndPassword(auth, email, password).catch((error) => alert(error))
   };

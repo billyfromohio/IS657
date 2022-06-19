@@ -20,7 +20,7 @@ const ChatListItem = ({ id, chatName, enterChat }) => {
 
     useEffect(() => {
         const messagesRef = collection(db, 'chats', id, 'messages');
-        const q = query(messageRef, orderBy('timestamp', 'desc'), limit(1));
+        const q = query(messagesRef, orderBy('timestamp', 'desc'), limit(1));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 setMessage(doc.data());
@@ -39,11 +39,11 @@ const ChatListItem = ({ id, chatName, enterChat }) => {
         />
         <ListItem.Content>
             <ListItem.Title style={styles.title}>{chatName}</ListItem.Title>
-            <ListItem.SubTitle numberOfLines={1} ellipsizeMode='tail'>
+            <ListItem.Subtitle numberOfLines={1} ellipsizeMode='tail'>
                 {message
                 ? message.displayName + ' : ' + message.messages
                 : 'No Message'}
-            </ListItem.SubTitle>
+            </ListItem.Subtitle>
         </ListItem.Content>
     </ListItem>    
   )

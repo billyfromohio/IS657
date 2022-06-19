@@ -13,10 +13,11 @@ import { getAuth, signOut } from 'firebase/auth';
 import { collection, getFirestore, onSnapshot } from 'firebase/firestore';
 import  firebaseApp  from '../firebase';
 import ChatListItem from '../ChatListItem'
+
 const auth = getAuth(firebaseApp);
 const db =getFirestore(firebaseApp);
 
-const HomeScreen = ([ navigation ]) => {
+const HomeScreen = ({ navigation }) => {
     const [chats, setChats] = useState([]);
 
         useEffect(() => {
@@ -82,7 +83,7 @@ const HomeScreen = ([ navigation ]) => {
         });
     }
 
-    function enterChar(id, chatName) {
+    function enterChat(id, chatName) {
         navigation.navigate('Chat', {id, chatName});
     }
 
