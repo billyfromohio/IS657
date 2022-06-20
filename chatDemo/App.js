@@ -8,7 +8,8 @@ import LoginScreen from "./screens/LoginScreen.js";
 import RegisterScreen from "./screens/RegisterScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import ChatListItem from "./ChatListItem.js";
-import AddChatScreen from "./AddChatScreen";
+import AddChatScreen from "./AddChatScreen.js";
+import ChatScreen from "./screens/ChatScreen.js"
 
 
 const Stack = createNativeStackNavigator();
@@ -25,6 +26,9 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="AddChat" component={AddChatScreen} />
+        <Stack.Screen name="Chat" component={ChatScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

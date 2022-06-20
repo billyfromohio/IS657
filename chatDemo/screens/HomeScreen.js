@@ -15,7 +15,7 @@ import  firebaseApp  from '../firebase';
 import ChatListItem from '../ChatListItem'
 
 const auth = getAuth(firebaseApp);
-const db =getFirestore(firebaseApp);
+const db = getFirestore(firebaseApp);
 
 const HomeScreen = ({ navigation }) => {
     const [chats, setChats] = useState([]);
@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
           }, []);
 
     useLayoutEffect(() => {
-        navigation.setOptions9({
+        navigation.setOptions({
             title: 'Chat Home',
             headerStyle: { backgroundColor: 'white' },
             headerTitleStyle: { color: 'black' },
@@ -44,7 +44,7 @@ const HomeScreen = ({ navigation }) => {
                     <TouchableOpacity activeOpacity={0.5}>
                         <Avatar
                         onPress={logout}
-                        roundedsource={{ uri: auth?.concurrentUser.photoURL }}
+                        roundedsource={{ uri: auth?.currentUser?.photoURL }}
                         />
                     </TouchableOpacity>
                 </View>
