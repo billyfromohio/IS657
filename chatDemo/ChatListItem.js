@@ -15,7 +15,7 @@ import firebaseApp from './firebase';
 
 const db = getFirestore(firebaseApp);
 
-const ChatListItem = ({ id, chatName, enterChat }) => {
+export default ChatListItem ({ id, chatName, enterChat }) {
     const [message, setMessage] = useState(null);
 
     useEffect(() => {
@@ -47,9 +47,9 @@ const ChatListItem = ({ id, chatName, enterChat }) => {
         </ListItem.Content>
     </ListItem>    
   )
+                
 }
 
-export default ChatListItem
 
 const styles = StyleSheet.create({
     title:{

@@ -9,7 +9,7 @@ import { useLayoutEffect } from 'react';
 
 const db = getFirestore(firebaseApp);
 
-const AddChatScreen = () => ({ navigation }) => {
+export default function AddChatScreen({ navigation }) {
     const [chatName, setChatName] = useState('');
 
     useLayoutEffect(() => {
@@ -24,7 +24,7 @@ const AddChatScreen = () => ({ navigation }) => {
             await addDoc(collection(db, 'chats'), { chatName });
             navigation.goBack();
         } catch (error) {
-            alert(error);
+            alert(error.message);
         }
     }
 
@@ -46,7 +46,7 @@ const AddChatScreen = () => ({ navigation }) => {
   );
 };
 
-export default AddChatScreen;
+
 
 const styles = StyleSheet.create({
     container: {
