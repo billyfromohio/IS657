@@ -1,13 +1,14 @@
 import React, { useEffect, useLayoutEffect, useState} from 'react'
 import { 
+    Pressable,
     SafeAreaView,
     ScrollView,
     StyleSheet,
     TouchableOpacity,
     View,
 } from 'react-native';
-import { Avatar } from '@rneui/base';
-import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
+import { Avatar, Text } from '@rneui/base';
+import { AntDesign, FontAwesome } from '@expo/vector-icons';
 
 import { getAuth, signOut } from 'firebase/auth';
 import { collection, getFirestore, onSnapshot } from 'firebase/firestore';
@@ -20,7 +21,9 @@ const db = getFirestore(firebaseApp);
 const HomeScreen = ({ navigation }) => {
     const [chats, setChats] = useState([]);
 
+
         useEffect(() => {
+            
             const unsubscribe = onSnapshot(collection(db, 'chats'), (snapshot) => {
               setChats(
                 snapshot.docs.map((doc) => ({
@@ -39,43 +42,42 @@ const HomeScreen = ({ navigation }) => {
             headerTitleStyle: { color: 'black' },
             headerTintColor: 'black',
 
+            
             headerLeft: () => (
+
+                
                 <View style={{ marginLeft: 20 }}>
-                    <TouchableOpacity activeOpacity={0.5}>
+
+                    <Pressable onPress={logout}> 
                         <Avatar
                         onPress={logout}
-                        roundedsource={{ uri: auth?.currentUser?.photoURL }}
+                        rounded
+                        source={{ uri: auth?.currentUser?.photoURL }}
                         />
-                    </TouchableOpacity>
+                    </Pressable>
+
+
                 </View>
             ),
 
             headerRight: () => {
                 <View
-                    style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        width: 80,
-                        marginRight: 20,
-                    }}
+                    style={styles.headerRight}
                 >
-                    <TouchableOpacity activeOpacity={0.5}>
-                        <AntDesign name='camera' size={24} color='black' />
-                    </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={0.5}>
-                        <AntDesign name='camera' size={24} color='black' />
-                        <SimpleLineIcons
-                            onPress={() => navigation.navigate('AddChat')}
-                            name='pencil'
-                            size={24}
-                            color='black'
-                      />
-                    </TouchableOpacity>
+                    <Pressable>
+                        <AntDesign name='camerao' size={24} color='black' />
+                    </Pressable>
+                    <Pressable activeOpacity={0.5}>
+                        <AntDesign name='pencil-square-o' size={24} color='black' />
+                      
+                    </Pressable>
                 </View>
 
             }
         });
     }, [navigation]);
+
+
 
     function logout () {
         signOut(auth).then(() => {
@@ -111,4 +113,12 @@ const HomeScreen = ({ navigation }) => {
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    headerRight: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: 80,
+        marginRight: 20,
+    },
+
+})
