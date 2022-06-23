@@ -1,6 +1,6 @@
 import { TextInput, View, Button } from 'react-native';
 import React, { Component } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/compat/auth';
 import firebaseApp from '../firebase';
 
 //eventually change old states to useState
