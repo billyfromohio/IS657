@@ -1,11 +1,19 @@
 import React from 'react';
-import * as firebase from "firebase";
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Landing from './components/auth/Landing';
-import firebaseConfig from './config';
+
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import firebaseApp from './firebase';
+
+const auth = getAuth(firebaseApp);
+onAuthStateChanged(auth, user => {
+  // Check for user status
+});
+
 
 const Stack = createStackNavigator();
 export default function App() {
