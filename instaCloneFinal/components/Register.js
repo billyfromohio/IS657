@@ -1,6 +1,6 @@
 import { TextInput, View, Button } from 'react-native';
 import React, { Component } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, } from 'firebase/compat/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import firebaseApp from '../firebase';
 
 //eventually change old states to useState
@@ -15,9 +15,9 @@ export class Register extends Component {
         }
         this.onSignUp = this.onSignUp.bind(this)
     }
-  onSignUp() {
+    onSignUp() {
         const { email, password, name } = this.state;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((result) => {
             console.log(result)
         }).catch((error) => {
