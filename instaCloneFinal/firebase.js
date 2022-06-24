@@ -1,13 +1,14 @@
-import { initializeApp, getApps, getApp } from 'firebase/app';
-
 import firebaseConfig from './config';
 
-let firebaseApp;
 
-if (getApps().length === 0) {
-  firebaseApp = initializeApp(firebaseConfig);
-} else {
-  firebaseApp = getApp();
-}
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initializeApp } from "firebase/app"
+
+const firebaseApp = initializeApp({ firebaseConfig});
+
+const auth = getAuth(firebaseApp);
+onAuthStateChanged(auth, user => {
+  // Check for user status
+});
 
 export default firebaseApp;

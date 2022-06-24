@@ -1,24 +1,21 @@
-import { TextInput, View, Button, Text } from 'react-native';
+import { TextInput, View, Button } from 'react-native';
 import React, { useState } from 'react';
-
+import firebase from 'firebase'
 
 //eventually change old states to useState
-export default function Register(props) {
+
+export default function Login(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
+  
 
     
     const onSignUp = () => {
-        firebase.auth().createUserWithEmailAndPassword(name, email, password)
+        firebase.auth().signInWithEmailAndPassword(email, password)
  }
 
     return (
       <View>
-        <TextInput 
-            placeholder='name'
-            onChangeText={(name) => setName({ name })}
-        />
         <TextInput 
             placeholder='email'
             onChangeText={(email) => setEmail({ email })}
@@ -30,7 +27,7 @@ export default function Register(props) {
         />
         <Button 
             onPress={() => onSignUp()}
-            title='Sign Up'
+            title='Sign In'
         />
       </View>
     )
