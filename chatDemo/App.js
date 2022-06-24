@@ -7,9 +7,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./screens/LoginScreen.js";
 import RegisterScreen from "./screens/RegisterScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
-//import ChatListItem from "./ChatListItem.js";
 import AddChatScreen from "./screens/AddChatScreen.js";
 import ChatScreen from "./screens/ChatScreen.js"
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 
 const Stack = createNativeStackNavigator();
@@ -21,6 +21,7 @@ const globalScreenOptions = {
 
 export default function App() {
   return (
+  <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator screenOptions={globalScreenOptions}>
         <Stack.Screen name="Login" component={LoginScreen} />
@@ -31,6 +32,7 @@ export default function App() {
 
       </Stack.Navigator>
     </NavigationContainer>
+  </SafeAreaProvider>
   );
 }
 
