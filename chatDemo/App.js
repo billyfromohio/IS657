@@ -7,8 +7,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./screens/LoginScreen.js";
 import RegisterScreen from "./screens/RegisterScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
-import ChatListItem from "./ChatListItem.js";
-import AddChatScreen from "./AddChatScreen.js";
+//import ChatListItem from "./ChatListItem.js";
+import AddChatScreen from "./screens/AddChatScreen.js";
 import ChatScreen from "./screens/ChatScreen.js"
 
 

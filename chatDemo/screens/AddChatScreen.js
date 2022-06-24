@@ -4,7 +4,7 @@ import { Button, Input } from "@rneui/base";
 import { AntDesign } from '@expo/vector-icons';
 
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import firebaseApp from './firebase';
+import firebaseApp from '../firebase';
 import { useLayoutEffect } from 'react';
 
 const db = getFirestore(firebaseApp);
