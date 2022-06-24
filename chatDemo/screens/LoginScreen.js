@@ -41,11 +41,12 @@ const LoginScreen = ({ navigation }) => {
           autoFocus 
           type="email" 
           value={email} 
+ //         autoCapitalize={'none'}
           onChangeText={(text) => setEmail(text)} 
           />
         <Input 
           placeholder="Password" 
-          sercureTextEntry 
+          secureTextEntry={true} 
           type="password"  
           value={password} 
           onChangeText={(text) => setPassword(text)} 

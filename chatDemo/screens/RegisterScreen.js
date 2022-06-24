@@ -63,6 +63,7 @@ const RegisterScreen = ({ navigation }) => {
         />
         <Input
             placeholder='Password'
+            secureTextEntry={true} 
             autoFocus
             type="text"
             value={password}
